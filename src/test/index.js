@@ -12,7 +12,7 @@ import React, {
   forwardRef,
   createRef
 } from 'react'
-import { Table } from 'antd'
+import { Table, Select } from 'antd'
 
 import { ThemeContext } from '../App'
 
@@ -35,6 +35,15 @@ function reducer(state, action) {
     default:
       return state
   }
+}
+
+const options = [];
+for (let i = 0; i < 100000; i++) {
+  const value = `${i.toString(36)}${i}`;
+  options.push({
+    value,
+    disabled: i === 10,
+  });
 }
 
 const Test = (props) => {
@@ -118,6 +127,16 @@ const Test = (props) => {
 
   return <div>
     {isOnline}
+    <Select
+      mode="multiple"
+      style={{ width: '100%' }}
+      placeholder="Please select"
+      defaultValue={['a10', 'c12']}
+      onChange={(value) => {
+        console.log(`selected ${value}`);
+      }}
+      options={options}
+    />
     <button onClick={() => {
       inputRef.current.alert(Object.keys(inputRef.current).join(' '))
       inputRef.current.focus()
