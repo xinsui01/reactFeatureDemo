@@ -2,6 +2,8 @@ import React, { createContext, createRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Test, { ThemesBth } from './test'
+import DiffDemo from './DiffDemo'
+import BatchUpdateDemo from './BatchUpdate'
 
 const themes = {
   light: {
@@ -77,6 +79,9 @@ export default class App extends React.Component {
             </Test>
           </header>
         </div>
+        <DiffDemo></DiffDemo>
+        <BatchUpdateDemo></BatchUpdateDemo>
+        <footer style={{height: '300px'}}></footer>
       </ThemeContext.Provider>
     );
   }
