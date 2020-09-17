@@ -28,37 +28,36 @@ export default class App extends React.Component {
 
   refBind = createRef();
 
-  // componentDidMount() {
-  //   this.timeHD = setInterval(() => {
-  //     const { dataSource, vip } = this.state;
-  //     const { length: len } = dataSource;
-  //     if (len > 50 && this.timeHD) clearInterval(this.timeHD);
-  //     const clientId = Math.floor(Math.random() * 50);
-  //     let _vip = vip;
-  //     if (clientId > 25) {
-  //       _vip = _vip.concat(clientId);
-  //     }
-  //     this.setState({
-  //       dataSource: dataSource.concat({
-  //         name: `user ${len}`,
-  //         clientId: clientId,
-  //         address: `rom ${len}`,
-  //       }),
-  //       vip: _vip,
-  //     });
-  //   }, 3000);
-  // }
+  componentDidMount() {
+    this.timeHD = setInterval(() => {
+      const { dataSource, vip } = this.state;
+      const { length: len } = dataSource;
+      if (len > 50 && this.timeHD) clearInterval(this.timeHD);
+      const clientId = Math.floor(Math.random() * 50);
+      let _vip = vip;
+      if (clientId > 25) {
+        _vip = _vip.concat(clientId);
+      }
+      this.setState({
+        dataSource: dataSource.concat({
+          name: `user ${len}`,
+          clientId: clientId,
+          address: `rom ${len}`,
+        }),
+        vip: _vip,
+      });
+    }, 3000);
+  }
 
-  // componentWillUnmount() {
-  //   this.timeHD && clearInterval(this.timeHD);
-  // }
+  componentWillUnmount() {
+    this.timeHD && clearInterval(this.timeHD);
+  }
 
   render() {
     const { dataSource, vip } = this.state;
-    console.log(this.refBind.current);
     return (
       <ThemeContext.Provider value={this.state.themes}>
-        {/* <div className="App">
+        <div className="App">
           <header className="App-header">
             <img
               width="100"
@@ -87,9 +86,9 @@ export default class App extends React.Component {
             </Test>
           </header>
         </div>
-        <DiffDemo></DiffDemo> */}
+        <DiffDemo></DiffDemo>
         <BatchUpdateDemo></BatchUpdateDemo>
-        {/* <ReactEventDemo></ReactEventDemo> */}
+        <ReactEventDemo />
         <footer style={{ height: '300px' }}></footer>
       </ThemeContext.Provider>
     );

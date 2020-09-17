@@ -10,6 +10,13 @@ export default class Demo extends React.PureComponent {
     $child.addEventListener('click', this.onChildDOMClick, false);
   }
 
+  componentWillUnmount() {
+    const $parent = ReactDOM.findDOMNode(this);
+    const $child = $parent.querySelector('.child');
+    $parent.removeEventListener('click', this.onParentDOMClick, true);
+    $child.removeEventListener('click', this.onChildDOMClick, false);
+  }
+
   onParentDOMClick = (evt) => {
     console.log('captrue: parent dom event');
   };

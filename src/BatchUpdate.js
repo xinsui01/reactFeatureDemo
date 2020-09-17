@@ -1,16 +1,18 @@
 import React from 'react';
 import { unstable_batchedUpdates } from 'react-dom';
 
-export default class BatchUpdateDemo extends React.Component {
+export default class BatchUpdateDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     // 记录 render 的执行次数
     this.renderCount = 0;
   }
+
   fn1 = () => {
     this.setState({ a: Math.random() });
     this.setState({ b: Math.random() });
   };
+
   fn2 = () => {
     // 模拟一个异步操作，真实业务里面可能是网络请求等
     setTimeout(() => {
@@ -18,6 +20,7 @@ export default class BatchUpdateDemo extends React.Component {
       this.setState({ a: Math.random() });
     }, 0);
   };
+
   fn3 = () => {
     // 模拟一个异步操作，真实业务里面可能是网络请求等
     setTimeout(
@@ -28,8 +31,10 @@ export default class BatchUpdateDemo extends React.Component {
       0
     );
   };
+
   render() {
     ++this.renderCount;
+    console.log('render');
     return (
       <div>
         <h1>截止到目前 render 执行次数{this.renderCount}</h1>
