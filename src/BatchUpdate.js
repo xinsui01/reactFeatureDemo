@@ -1,8 +1,7 @@
+import React from 'react';
+import { unstable_batchedUpdates } from 'react-dom';
 
-import React from "react";
-import { unstable_batchedUpdates } from "react-dom";
-
-export default class BatchUpdateDemo extends React.PureComponent {
+export default class BatchUpdateDemo extends React.Component {
   constructor(props) {
     super(props);
     // 记录 render 的执行次数
@@ -39,8 +38,7 @@ export default class BatchUpdateDemo extends React.PureComponent {
         <button onClick={this.fn2}>在一个异步的事件循环里 setState 两次</button>
         <br />
         <button onClick={this.fn3}>
-          在一个异步的事件循环里 setState 两次, 但是使用
-          ReactDOM.unstable_batchedUpdates 强制 batch
+          在一个异步的事件循环里 setState 两次, 但是使用 ReactDOM.unstable_batchedUpdates 强制 batch
         </button>
       </div>
     );
