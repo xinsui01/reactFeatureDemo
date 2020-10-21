@@ -34,32 +34,32 @@ class ChildA extends React.PureComponent {
   }
 }
 
-class ChildB extends React.PureComponent {
-  componentDidMount() {
-    console.log('B:componentDidMount')
-  }
-  componentDidUpdate() {
-    console.log('B:componentDidUpdate')
-  }
-  componentWillUnmount() {
-    console.log('B:componentWillUnmount')
-  }
-  render() {
-    return <div>B</div>
-  }
-}
+// class ChildB extends React.PureComponent {
+//   componentDidMount() {
+//     console.log('B:componentDidMount')
+//   }
+//   componentDidUpdate() {
+//     console.log('B:componentDidUpdate')
+//   }
+//   componentWillUnmount() {
+//     console.log('B:componentWillUnmount')
+//   }
+//   render() {
+//     return <div>B</div>
+//   }
+// }
 
-class ChildC extends React.PureComponent {
-  componentDidMount() {
-    console.log('C:componentDidMount')
-  }
-  componentDidUpdate() {
-    console.log('C:componentDidUpdate')
-  }
-  componentWillUnmount() {
-    console.log('C:componentWillUnmount')
-  }
-  render() {
-    return <div>C</div>
-  }
-}
+// class ChildC extends React.PureComponent {
+//   componentDidMount() {
+//     console.log('C:componentDidMount')
+//   }
+//   componentDidUpdate() {
+//     console.log('C:componentDidUpdate')
+//   }
+//   componentWillUnmount() {
+//     console.log('C:componentWillUnmount')
+//   }
+//   render() {
+//     return <div>C</div>
+//   }
+// }
