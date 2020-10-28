@@ -212,6 +212,7 @@ function FancyInput(props, ref) {
   return <input type="text" ref={inputRef} />
 }
 
+// eslint-disable-next-line
 FancyInput = forwardRef(FancyInput)
 
 export const ThemesBth = forwardRef(ThemedButton)

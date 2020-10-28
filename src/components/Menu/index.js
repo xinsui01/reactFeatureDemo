@@ -5,7 +5,7 @@ import { navs } from './config'
 import {  Menu } from 'antd'
 
 export default function() {
-  const [selectedKey, setSelectedKey] = useState(() => {
+  const [ selectedKey ] = useState(() => {
     const url = window.location.pathname
     const findRoute = navs.find((nav) => {
       return nav.path === url
