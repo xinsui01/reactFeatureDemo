@@ -4,7 +4,7 @@ import Menu from '../Menu'
 
 const { Header } = Layout;
 
-export default function () {
+export default function CustomHeader() {
   return <Header>
       <div
         className="App-logo"

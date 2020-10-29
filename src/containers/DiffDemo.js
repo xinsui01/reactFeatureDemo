@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-export default function (props) {
+export default function DiffDemo(props) {
   const [state, setstate] = useState([
     'A','B','C'
   ])
