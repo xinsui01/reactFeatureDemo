@@ -12,7 +12,7 @@ export default function DiffDemo(props) {
         ])
     }, 6000)
   }, [])
-  return <div class="test">
+  return <div className="test">
     {state.map(item => {
       return <ChildA index={item} key={item}></ChildA>
     })}

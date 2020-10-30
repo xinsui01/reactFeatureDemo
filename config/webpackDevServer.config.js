@@ -65,7 +65,7 @@ module.exports = function(proxy, allowedHost) {
     hot: true,
     // Use 'ws' instead of 'sockjs-node' on server since we're using native
     // websockets in `webpackHotDevClient`.
-    transportMode: 'ws',
+    transportMode: 'sockjs', // ws 模式客户端建立连接url有问题
     // Prevent a WS client from getting injected as we're already including
     // `webpackHotDevClient`.
     injectClient: false,
@@ -82,7 +82,7 @@ module.exports = function(proxy, allowedHost) {
     publicPath: paths.publicUrlOrPath.slice(0, -1), // 用于确定 bundle 的来源，并具有优先级高于 contentBase。
     // WebpackDevServer is noisy by default so we emit custom message instead
     // by listening to the compiler events with `compiler.hooks[...].tap` calls above.
-    quiet: false, // 启用 devServer.quiet 后，除了初始启动信息外，什么都不会写入控制台。 这也意味着来自webpack的错误或警告是不可见的。
+    quiet: true, // 启用 devServer.quiet 后，除了初始启动信息外，什么都不会写入控制台。 这也意味着来自webpack的错误或警告是不可见的。
     // Reportedly, this avoids CPU overload on some systems.
     // https://github.com/facebook/create-react-app/issues/293
     // src/node_modules is not ignored to support absolute imports
