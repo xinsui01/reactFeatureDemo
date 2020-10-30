@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 
-export default function (props) {
+export default function DiffDemo(props) {
   const [state, setstate] = useState([
     'A','B','C'
   ])
@@ -12,7 +12,7 @@ export default function (props) {
         ])
     }, 6000)
   }, [])
-  return <div class="test">
+  return <div className="test">
     {state.map(item => {
       return <ChildA index={item} key={item}></ChildA>
     })}

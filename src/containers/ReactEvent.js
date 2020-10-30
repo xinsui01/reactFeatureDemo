@@ -1,9 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {createRef} from 'react';
 
 export default class Demo extends React.PureComponent {
+  constructor() {
+    super();
+    this.$parent = createRef()
+  }
   componentDidMount() {
-    const $parent = ReactDOM.findDOMNode(this);
+    const $parent = this.$parent.current
     const $child = $parent.querySelector('.child');
 
     $parent.addEventListener('click', this.onParentDOMClick, true);
@@ -11,7 +14,7 @@ export default class Demo extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const $parent = ReactDOM.findDOMNode(this);
+    const $parent = this.$parent.current
     const $child = $parent.querySelector('.child');
     $parent.removeEventListener('click', this.onParentDOMClick, true);
     $child.removeEventListener('click', this.onChildDOMClick, false);
@@ -42,7 +45,7 @@ export default class Demo extends React.PureComponent {
 
   render() {
     return (
-      <div onClickCapture={this.onParentCaptureClick} onClick={this.onParentClick}>
+      <div ref={this.$parent} onClickCapture={this.onParentCaptureClick} onClick={this.onParentClick}>
         <div className="child" onClickCapture={this.onChildCaptureClick} onClick={this.onChildClick}>
           react 合成事件和原生事件混合 Demo
         </div>

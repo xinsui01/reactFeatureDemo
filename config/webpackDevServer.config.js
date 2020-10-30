@@ -9,7 +9,7 @@ const redirectServedPath = require('react-dev-utils/redirectServedPathMiddleware
 const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
 
-const host = process.env.HOST || '0.0.0.0';
+const host = process.env.HOST || '0.0.0.0'; // 如果希望服务器可从外部访问，配置 0.0.0.0
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
@@ -53,8 +53,8 @@ module.exports = function(proxy, allowedHost) {
     // for files like `favicon.ico`, `manifest.json`, and libraries that are
     // for some reason broken when imported through webpack. If you just want to
     // use an image, put it in `src` and `import` it from JavaScript instead.
-    contentBase: paths.appPublic,
-    contentBasePublicPath: paths.publicUrlOrPath,
+    contentBase: paths.appPublic, // 告诉服务器内容的来源。仅在需要提供静态文件时才进行配置
+    contentBasePublicPath: paths.publicUrlOrPath, // 告诉服务器使用哪个 URL 服务 devServer.contentBase 静态内容
     // By default files from `contentBase` will not trigger a page reload.
     watchContentBase: true,
     // Enable hot reloading server. It will provide WDS_SOCKET_PATH endpoint
@@ -65,7 +65,7 @@ module.exports = function(proxy, allowedHost) {
     hot: true,
     // Use 'ws' instead of 'sockjs-node' on server since we're using native
     // websockets in `webpackHotDevClient`.
-    transportMode: 'ws',
+    transportMode: 'sockjs', // ws 模式客户端建立连接url有问题
     // Prevent a WS client from getting injected as we're already including
     // `webpackHotDevClient`.
     injectClient: false,
@@ -79,10 +79,10 @@ module.exports = function(proxy, allowedHost) {
     // we specified in the webpack config. When homepage is '.', default to serving
     // from the root.
     // remove last slash so user can land on `/test` instead of `/test/`
-    publicPath: paths.publicUrlOrPath.slice(0, -1),
+    publicPath: paths.publicUrlOrPath.slice(0, -1), // 用于确定 bundle 的来源，并具有优先级高于 contentBase。
     // WebpackDevServer is noisy by default so we emit custom message instead
     // by listening to the compiler events with `compiler.hooks[...].tap` calls above.
-    quiet: true,
+    quiet: true, // 启用 devServer.quiet 后，除了初始启动信息外，什么都不会写入控制台。 这也意味着来自webpack的错误或警告是不可见的。
     // Reportedly, this avoids CPU overload on some systems.
     // https://github.com/facebook/create-react-app/issues/293
     // src/node_modules is not ignored to support absolute imports

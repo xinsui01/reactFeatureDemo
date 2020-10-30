@@ -2,9 +2,9 @@ import './index.scss'
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import { navs } from './config'
-import {  Menu } from 'antd'
+import { Menu } from 'antd'
 
-export default function() {
+export default function CustomMenu() {
   const [ selectedKey ] = useState(() => {
     const url = window.location.pathname
     const findRoute = navs.find((nav) => {
