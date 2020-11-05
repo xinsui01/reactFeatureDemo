@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
+import { Input } from 'antd'
 import { textState, charCountState } from './recoil'
 import TodoList from './TodoList'
 
@@ -18,7 +19,7 @@ function TextInput() {
   }, [setText])
 
   return <div>
-    <input type="text" value={text} onChange={onChange}/>
+    <Input type="text" value={text} onChange={onChange}/>
     <br/>
     Echo: {text}
   </div>
