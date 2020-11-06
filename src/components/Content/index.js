@@ -8,11 +8,11 @@ import RecoilDemo from '../../containers/RecoilDemo'
 import ThemeContext from '../../containers/ThemeContext'
 import { navs } from '../Menu/config'
 
-const { Content }  = Layout
+const { Content } = Layout
 
 
 function CustomContent(props) {
-  
+
   const [breadcrumb, updateBreadcrumb] = useState(() => {
     const url = window.location.pathname
     const findRoute = navs.find((nav) => {
@@ -21,7 +21,7 @@ function CustomContent(props) {
     return findRoute?.title ?? '0'
   })
 
-  const {location} = props
+  const { location } = props
   useEffect(() => {
     console.log(location)
     const { pathname } = location
@@ -30,28 +30,30 @@ function CustomContent(props) {
     })
     updateBreadcrumb(findRoute?.title || 'Home')
   }, [location])
-  
-  return <Content style={{ padding: '0 50px' }}>
+
+  return <Content style={{ padding: '0 50px'}}>
     <Breadcrumb style={{ margin: '16px 0' }}>
       <Breadcrumb.Item>{breadcrumb}</Breadcrumb.Item>
     </Breadcrumb>
-    <div className="site-layout-content"><Switch>
-      <Route path="/themeContext">
-        <ThemeContext />
-      </Route>
-      <Route path="/batchUpdate">
-        <BatchUpdate />
-      </Route>
-      <Route path="/diffDemo">
-        <DiffDemo />
-      </Route>
-      <Route path="/reactEvent">
-        <ReactEvent />
-      </Route>
-      <Route path="/recoil">
-        <RecoilDemo />
-      </Route>
-    </Switch></div>
+    <div>
+      <Switch>
+        <Route path="/themeContext">
+          <ThemeContext />
+        </Route>
+        <Route path="/batchUpdate">
+          <BatchUpdate />
+        </Route>
+        <Route path="/diffDemo">
+          <DiffDemo />
+        </Route>
+        <Route path="/reactEvent">
+          <ReactEvent />
+        </Route>
+        <Route path="/recoil">
+          <RecoilDemo />
+        </Route>
+      </Switch>
+    </div>
   </Content>
 }
 
